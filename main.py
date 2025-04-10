@@ -75,9 +75,8 @@ def get_bet():
     
     return amount
 
-def check_bet(balance, lines):
+def check_bet(balance, lines, bet):
     while True: 
-        bet = get_bet()
         total_bet = bet * lines
 
         if(total_bet <= balance):
@@ -119,18 +118,30 @@ def print_slot_spin(columns):
             else:
                 print(column[row])
 
-    print([len(col) for col in columns])
-
 
 def check_win(cols, lines, bet, values):
-    print()
+    winnings = 0
+    winning_lines = []
+    for line in range (lines):
+        symbol = cols[0][line]
+        for column in cols:
+            symbol_to_check = column[line]
+            if(symbol != symbol_to_check):
+                break
+            else:
+                winnings += values[symbol] * bet
+                winning_lines.append(line + 1)
+    return (winnings, winning_lines)
 
 def main():
     balance = deposit()
     lines = get_num_of_lines()
-    check_bet(balance, lines)
+    bet = get_bet()
+    check_bet(balance, lines, bet)
     slots = get_slot_spin(ROWS, COLS, symbol_count)
     print_slot_spin(slots)
+    winnings, winning_lines = check_win(slots, lines, bet, symbol_value)
+    print(f"You won {winnings} on line {winning_lines}!!")
 
     # print(f"Amount deposited: ${balance}, \nNo. of lines: ${lines}, \nAmount betted: ${bet}")
 
