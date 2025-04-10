@@ -1,7 +1,12 @@
+import random
+
 # cap letter means constants
 MAX_BET = 10000
 MIN_BET = 10
 MAX_LINES = 3
+
+ROWS = 3
+COLS = 3
 
 def deposit():
     # checking if the entered amount is a positive number
