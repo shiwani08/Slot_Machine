@@ -21,6 +21,8 @@ This is a beginner-friendly **Slot Machine** game built using Python. It's a con
 | `deposit()`         | Prompts the player to deposit money                         |
 | `get_num_of_lines()`| Gets the number of lines the player wants to bet on         |
 | `get_bet()`         | Gets the bet amount per line from the player                |
+| `get_bet()`         | Gets the bet amount per line from the player                |
+| `check_bet()`       | Checks the betting amount is at par with the deposided amount|
 
 ---
 
