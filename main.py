@@ -67,6 +67,10 @@ def check_bet(balance, lines):
             print(f"You do not have sufficient balance! Amount left: ${balance}")
             break
 
+def get_slot_spin:
+
+def check_win:
+
 def main():
     balance = deposit()
     lines = get_num_of_lines()
