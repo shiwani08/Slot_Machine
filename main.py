@@ -8,6 +8,22 @@ MAX_LINES = 3
 ROWS = 3
 COLS = 3
 
+
+# dictionary - similar to hashmap
+symbol_count = {
+    "A" : 2,
+    "B" : 4,
+    "C" : 6,
+    "D" : 8
+}
+
+symbol_value = {
+    "A" : 8,
+    "B" : 6,
+    "C" : 4,
+    "D" : 2
+}
+
 def deposit():
     # checking if the entered amount is a positive number
     while True: 
@@ -72,14 +88,49 @@ def check_bet(balance, lines):
             print(f"You do not have sufficient balance! Amount left: ${balance}")
             break
 
-def get_slot_spin:
+def get_slot_spin(rows, cols, symbols):
+    all_symbols = []
+    for symbol, symbol_count in symbols.items():
+        # _ means a throwaway variable name. It's used when the loop variable isn't going to be used
+        for _ in range(symbol_count):
+            all_symbols.append(symbol)
 
-def check_win:
+    columns = []
+    for _ in range (cols):
+        column = []
+        current_symbols = all_symbols[:]
+        for _ in range (rows):
+            value = random.choice(current_symbols)
+            current_symbols.remove(value)
+            column.append(value)
+
+        columns.append(column)
+
+    return columns
+
+def print_slot_spin(columns):
+    # first we need to transpose the matrix, because the values are stored in the form of cols and not rows
+
+    for row in range (len(columns[0])):
+        # enumerate gives number to i, basically indices
+        for i, column in enumerate(columns):
+            if(i != len(columns) - 1):
+                print(column[row], "|", end=" ")
+            else:
+                print(column[row])
+
+    print([len(col) for col in columns])
+
+
+def check_win(cols, lines, bet, values):
+    print()
 
 def main():
     balance = deposit()
     lines = get_num_of_lines()
     check_bet(balance, lines)
+    slots = get_slot_spin(ROWS, COLS, symbol_count)
+    print_slot_spin(slots)
 
     # print(f"Amount deposited: ${balance}, \nNo. of lines: ${lines}, \nAmount betted: ${bet}")
 
